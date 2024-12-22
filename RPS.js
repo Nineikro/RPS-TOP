@@ -1,3 +1,8 @@
+//variables in global scope - can be accessed anywhere since they're out of a function or block
+//keep in mind, they need to be LET since they'll be modified to keep track of scores
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice(){
     //Math.random(3) doesnt work since it doesnt receive any parameters ... Math.random()
     //Math.floor(x) rounds number to its nearest integer
