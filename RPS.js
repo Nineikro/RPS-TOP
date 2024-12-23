@@ -43,44 +43,74 @@ function getHumanChoice(){
 
 function playRound(humanChoice, computerChoice){
     if(humanChoice == "rock" && computerChoice == "rock"){
-        console.log("Tie!");
+        console.log("No points given!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "rock" && computerChoice == "paper"){
         computerScore++;
-        console.log("Computer scores, you lose :(");
+        console.log("Computer gets a point!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "rock" && computerChoice == "scissors"){
         humanScore++;
-        console.log("User scores and wins!")
+        console.log("User gets a point!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "paper" && computerChoice == "rock"){
         humanScore++;
-        console.log("User scores and wins!")
+        console.log("User gets a point!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "paper" && computerChoice == "paper"){
-        console.log("Tie!");
+        console.log("No points given!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "paper" && computerChoice == "scissors"){
         computerScore++;
-        console.log("Computer scores, you lose :(");
+        console.log("Computer gets a point!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "scissors" && computerChoice == "rock"){
         computerScore++;
-        console.log("Computer scores, you lose :(");
+        console.log("Computer gets a point!");
+        console.log("-------------------------------------")
     }
     else if(humanChoice == "scissors" && computerChoice == "paper"){
         humanScore++;
-        console.log("User scores and wins!")
+        console.log("User gets a point!");
+        console.log("-------------------------------------")
     }
     else{
-        console.log("Tie!");
+        console.log("No points given!");
+        console.log("-------------------------------------")
     }
 }
 
+function playGame(){
+    for(i = 0; i < 5; i++){
+        //calls function and stores result in variables so that they can be put into function's parameters
+        //an error ive faced: dont use console.log(getHumanChoice()) here. console.log() returns undefined and not the result of the function that was called. i tried it out on my function there and it alwayes returned "Tie!", thats because undefined fell into the last "else"... make another console.log() with these variables' names if you want to see the results
+        let humanSelection = getHumanChoice();
+        let computerSelection = getComputerChoice();
 
-//calls function and stores result in variables so that they can be put into function's parameters
-//an error ive faced: dont use console.log(getHumanChoice()) here. console.log() returns undefined and not the result of the function that was called. i tried it out on my function there and it alwayes returned "Tie!", thats because undefined fell into the last "else"... make another console.log() with these variables' names if you want to see the results
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
+        //let console.log() here since the variable is stored in this block of code
+        console.log("User chose: " + humanSelection);
+        console.log("Computer chose: " + computerSelection);
+        playRound(humanSelection, computerSelection);
+    }
 
-playRound(humanSelection, computerSelection);
+    console.log("User score: " + humanScore);
+    console.log("Computer score: " + computerScore);
+
+    if(humanScore > computerScore){
+        console.log("User wins!");
+    }
+    else if(computerScore > humanScore){
+        console.log("User loses :(");
+    }
+    else{
+        console.log("It's a tie!")
+    }
+}
+
+playGame();
